@@ -1,0 +1,24 @@
+package com.fudan.helper;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.fudan.helper.ActivityCollector;
+
+/**
+ * Created by FanJin on 2017/1/20.
+ */
+
+public class BaseActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityCollector.addActivity(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
+    }
+}
